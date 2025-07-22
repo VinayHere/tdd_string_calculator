@@ -20,4 +20,8 @@ void main(){
     expect(stringCalculator.add('1, 6'), 7);
   });
   
+  test('Should return sum of the multiple numbers with comma separated', (){
+    expect(stringCalculator.add('1,8,7,6,4'), 26);
+  });
+  
 }
