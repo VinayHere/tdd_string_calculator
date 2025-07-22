@@ -32,5 +32,17 @@ void main(){
     expect(stringCalculator.add("//;\n1;2"), 3);
   });
 
+  test('Should throw exception if there are any negative number with values', () {
+    expect(
+          () => stringCalculator.add("1,-2,3,-4"),
+      throwsA(
+        predicate(
+              (e) =>
+          e is Exception &&
+              e.toString() == 'Exception: Negative numbers not allowed -2, -4',
+        ),
+      ),
+    );
+  });
 
 }

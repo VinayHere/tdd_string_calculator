@@ -8,14 +8,22 @@ class StringCalculatorImpl{
     String actualNumbers = numbers;
 
     if (numbers.startsWith('//')) {
-      final split = numbers.split('\n');
-      delimiter = split.first.substring(2);
-      actualNumbers = split[1];
+      final parts = numbers.split('\n');
+      delimiter = parts[0].substring(2);
+      actualNumbers = parts[1];
     }
 
     final normalized = actualNumbers.replaceAll('\n', delimiter);
     final parts = normalized.split(delimiter);
-    return parts.map(int.parse).reduce((a, b) => a + b);
+
+    final nums = parts.map(int.parse).toList();
+    final negatives = nums.where((n) => n < 0).toList();
+
+    if (negatives.isNotEmpty) {
+      throw Exception('Negative numbers not allowed ${negatives.join(', ')}');
+    }
+
+    return nums.reduce((a, b) => a + b);
   }
 
 }
