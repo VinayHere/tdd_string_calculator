@@ -12,4 +12,12 @@ void main(){
     expect(stringCalculator.add(''), 0);
   });
   
+  test('Should return number itself for single digit number', (){
+    expect(stringCalculator.add('1'), 1);
+  });
+
+  test('Should return sum of the numbers if number appears with comma separated', (){
+    expect(stringCalculator.add('1, 6'), 7);
+  });
+  
 }
