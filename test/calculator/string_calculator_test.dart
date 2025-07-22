@@ -23,5 +23,9 @@ void main(){
   test('Should return sum of the multiple numbers with comma separated', (){
     expect(stringCalculator.add('1,8,7,6,4'), 26);
   });
+
+  test('Should return sum which will support newlines as separators', () {
+    expect(stringCalculator.add("1\n2,3"), 6);
+  });
   
 }
