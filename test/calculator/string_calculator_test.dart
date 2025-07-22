@@ -27,5 +27,10 @@ void main(){
   test('Should return sum which will support newlines as separators', () {
     expect(stringCalculator.add("1\n2,3"), 6);
   });
-  
+
+  test('Should return sum of the numbers which will supports custom delimiter', () {
+    expect(stringCalculator.add("//;\n1;2"), 3);
+  });
+
+
 }

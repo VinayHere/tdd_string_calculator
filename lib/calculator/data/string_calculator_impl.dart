@@ -4,8 +4,17 @@ class StringCalculatorImpl{
     if (numbers.isEmpty) return 0;
 
     // We will update the tests here
-    final normalized = numbers.replaceAll('\n', ',');
-    final parts = normalized.split(',');
+    String delimiter = ',';
+    String actualNumbers = numbers;
+
+    if (numbers.startsWith('//')) {
+      final split = numbers.split('\n');
+      delimiter = split.first.substring(2);
+      actualNumbers = split[1];
+    }
+
+    final normalized = actualNumbers.replaceAll('\n', delimiter);
+    final parts = normalized.split(delimiter);
     return parts.map(int.parse).reduce((a, b) => a + b);
   }
 
